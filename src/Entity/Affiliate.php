@@ -1,3 +1,5 @@
+<?php
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -5,12 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="affiliates
+ * @ORM\Table(name="affiliates")
  * @ORM\HasLifecycleCallbacks()
  */
 class Affiliate
 {
-
     /**
      * @var int
      *
@@ -65,10 +66,8 @@ class Affiliate
 
     public function __construct()
     {
-      $this -> categories = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
-
-    <!-- Setter and getter are below this line -->
 
     /**
      * @return int
@@ -200,7 +199,6 @@ class Affiliate
         return $this;
     }
 
-    <!-- Lifecycle callbacks function/methods -->
     /**
      * @ORM\PrePersist
      */
@@ -208,5 +206,4 @@ class Affiliate
     {
         $this->createdAt = new \DateTime();
     }
-
 }

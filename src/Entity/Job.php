@@ -1,3 +1,5 @@
+<?php
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,19 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="jobs")
  * @ORM\HasLifecycleCallbacks()
  */
-
 class Job
 {
-  /**
-   * @var int
-   *
-   * @ORM\Column(type="integer")
-   * @ORM\Id
-   * @ORM\GeneratedValue(strategy="AUTO")
-   */
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     private $id;
-
-    private $category;
 
     /**
      * @var string
@@ -133,8 +132,6 @@ class Job
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
-
-    <!-- All the setter and getters are below this line. -->
 
     /**
      * @return int
@@ -331,6 +328,7 @@ class Job
     {
         return $this->public;
     }
+
     /**
      * @param bool $public
      *
@@ -438,7 +436,7 @@ class Job
 
         return $this;
     }
-<!-- Lifecycle callbacks function/methods -->
+
     /**
      * @ORM\PrePersist()
      */
@@ -455,5 +453,4 @@ class Job
     {
         $this->updatedAt = new \DateTime();
     }
-
 }

@@ -1,43 +1,40 @@
+<?php
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-<!-- that will describe how our objects will be stored in the database -->
-
 /**
  * @ORM\Entity()
  * @ORM\Table(name="categories")
  */
-
-class Category {
-
-
-  /**
+class Category
+{
+    /**
      * @var int
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-  private $id;
+    private $id;
 
-
-  /**
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=100)
      */
-   private $name
+    private $name;
 
-  /**
+    /**
      * @var Job[]|ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
      */
     private $jobs;
 
-  /**
+    /**
      * @var Affiliate[]|ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Affiliate", mappedBy="categories")
@@ -46,15 +43,13 @@ class Category {
 
     public function __construct()
     {
-      $this -> jobs = new ArrayCollection();
-      $this -> affiliates = new ArrayCollection();
+        $this->jobs = new ArrayCollection();
+        $this->affiliates = new ArrayCollection();
     }
 
-
-<!-- Setting up setter and getter based on what kind of data I am dealing with -->
     /**
-    * @return int
-    */
+     * @return int
+     */
     public function getId() : ?int
     {
         return $this->id;
@@ -147,8 +142,4 @@ class Category {
 
         return $this;
     }
-
-
-
-
 }
